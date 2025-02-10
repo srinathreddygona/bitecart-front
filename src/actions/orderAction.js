@@ -1,5 +1,4 @@
 import axios from "axios";
-const apiUrl = process.env.REACT_APP_API_URL;
 
 import {
 
@@ -17,7 +16,7 @@ import {
     ORDER_DETAILS_SUCCESS,
 } from "../constants/orderConstant";
 
-
+const apiUrl = process.env.REACT_APP_API_URL;
 export const createOrder = (session_id) => async (dispatch) => {
     try {
         dispatch({
