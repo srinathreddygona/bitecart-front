@@ -82,7 +82,7 @@ export const updateProfile=(userData)=>async(dispatch)=>{
             }
         };
         const {data}=await axios.put(
-            "${apiUrl}/api/v1/users/me/update",
+            `${apiUrl}/api/v1/users/me/update`,
             userData,
             config
         );
@@ -127,7 +127,7 @@ try{
         },
     };
     const {data}=await axios.put(
-        "${apiUrl}/api/v1/users/password/update",
+        `${apiUrl}/api/v1/users/password/update`,
         passwords,
         config,
     );
@@ -155,7 +155,7 @@ export const forgotPassword=(email)=>async(dispatch)=>{
             },
         };
         const {data}=await axios.post(
-            "${apiUrl}/api/v1/users/forgetPassword",
+            `${apiUrl}/api/v1/users/forgetPassword`,
             email,config
         );
         dispatch({
