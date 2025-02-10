@@ -1,10 +1,10 @@
 import axios from "axios";
 import { ADD_TO_CART, FETCH_CART, REMOVE_CART_ITEM, UPDATE_CART_ITEM } from "../constants/cartConstant";
-
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export const fetchCartItems=(alert)=>async(dispatch)=>{
     try {
-        const response=await axios.get("/api/v1/eats/cart/get-cart");
+        const response=await axios.get("${apiUrl}/api/v1/eats/cart/get-cart");
         dispatch({
             type:FETCH_CART,
             payload:response.data.data,
@@ -21,7 +21,7 @@ export const fetchCartItems=(alert)=>async(dispatch)=>{
 export const addItemToCart=(foodItemId,restaurant,quantity,alert)=>async(dispatch,getState)=>{
     try {
       const {user} = getState().auth;//return the current store tree
-      const response=await axios.post("/api/v1/eats/cart/add-to-cart",{
+      const response=await axios.post("${apiUrl}/api/v1/eats/cart/add-to-cart",{
       userId: user._id,
       foodItemId,
       restaurantId: restaurant,
@@ -43,7 +43,7 @@ export const updateCartQuantity=(foodItemId,quantity,alert)=>async(dispatch,getS
         if(typeof foodItemId==="object"){
             foodItemId=foodItemId._id;
         }
-        const response =await axios.post("/api/v1/eats/cart/update-cart-item",{
+        const response =await axios.post("${apiUrl}/api/v1/eats/cart/update-cart-item",{
         userId:user._id,
         foodItemId:foodItemId,
         quantity,
@@ -64,7 +64,7 @@ export const removeItemFromCart=(foodItemId)=>async(dispatch ,getState)=>{
         if(typeof foodItemId==="object"){
             foodItemId=foodItemId._id;
         }
-            const response=await axios.delete("/api/v1/eats/cart/delete-cart-item",{
+            const response=await axios.delete("${apiUrl}/api/v1/eats/cart/delete-cart-item",{
                 data:{userId:user._id,foodItemId},
 
 

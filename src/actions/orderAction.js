@@ -1,4 +1,5 @@
 import axios from "axios";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 import {
 
@@ -26,7 +27,7 @@ export const createOrder = (session_id) => async (dispatch) => {
             headers: { "Content-Type": "application/json" },
         };
         const { data } = await axios.post(
-            "/api/v1/eats/orders/new",
+            "${apiUrl}/api/v1/eats/orders/new",
              { session_id }, 
              config);
         dispatch({
@@ -47,7 +48,7 @@ export const payment = (items, restaurant) => async (dispatch) => {
         const config = {
             headers: { "Content-Type": "application/json" },
         };
-        const { data } = await axios.post("/api/v1/payment/process",
+        const { data } = await axios.post("${apiUrl}/api/v1/payment/process",
             {
                 items,
                 restaurant,
@@ -71,7 +72,7 @@ export const myOrders = () => async (dispatch) => {
         dispatch({
             type: MY_ORDER_REQUEST,
         });
-        const { data } = await axios.get("/api/v1/eats/orders/me/myOrders");
+        const { data } = await axios.get("${apiUrl}/api/v1/eats/orders/me/myOrders");
         dispatch({
             type: MY_ORDER_SUCCESS,
             payload: data.orders,
@@ -91,7 +92,7 @@ export const getOrderDetails = (id) => async (dispatch) => {
 
         dispatch({ type: ORDER_DETAILS_REQUEST });
 
-        const { data } = await axios.get(`/api/v1/eats/orders/${id}`);
+        const { data } = await axios.get(`${apiUrl}/api/v1/eats/orders/${id}`);
 
         dispatch({
 

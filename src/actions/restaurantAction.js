@@ -1,9 +1,12 @@
 import { ALL_RESTAURANTS_REQUEST, ALL_RESTAURANTS_SUCCESS, ALL_RESTAURANTS_FAIL,SORT_BY_RATINGS, SORT_BY_REVIEWS,TOGGLE_VEG_ONLY,CLEAR_ERROR } from "../constants/restaurantConstant"
 import axios from "axios";
+const apiUrl = process.env.REACT_APP_API_URL;
+
+
 export const getRestaurants =()=>{
     return async (dispatch)=>{
      try {  dispatch({type : ALL_RESTAURANTS_REQUEST});
-        let link =`/api/v1/eats/stores`;
+        let link =`${apiUrl}/api/v1/eats/stores`;
         const {data}=await axios.get(link);
         console.log(data);
         const {restaurants,count}=data;
