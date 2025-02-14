@@ -18,7 +18,7 @@ alert.success("Logged Out Successfully");
   return ( <nav className="navbar row sticky-top">
   <div className="col-12 col-md-3">
     <Link to="/">
-    <img src="/images/logo3.png" alt="logo" className="logo" />
+    <img src="/images/logo3.png" alt="logo" className="logo"  />
     </Link>
   </div>
   

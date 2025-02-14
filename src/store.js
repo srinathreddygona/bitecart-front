@@ -6,7 +6,7 @@ import { authReducer, forgotPasswordReducer, userReducer } from "./reducer/userR
 import { cartReducer } from "./reducer/cartReducer";
 import { myOrderReducer, newOrderReducer, orderDetailsReducer } from "./reducer/orderReducer";
 //import { myOrders } from "./actions/orderAction";
-import { forgotPassword } from "./actions/userAction";
+//import { forgotPassword } from "./actions/userAction";
 
 
 

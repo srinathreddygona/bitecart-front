@@ -1,5 +1,5 @@
 {
-  "name": "foodproject",
+  "name": "bitecartapp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,7 +11,6 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.0",
-    "caniuse-lite": "^1.0.30001699",
     "countries-list": "^2.6.1",
     "mdbreact": "^5.2.0",
     "react": "^18.2.0",
@@ -53,5 +52,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://bitecart-back.onrender.com"
+  "proxy": "http://127.0.0.1:4000"
 }

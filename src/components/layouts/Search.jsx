@@ -7,7 +7,7 @@ export default function Search() {
     <div className="input-group">
         <input 
         type="text" 
-        placeholder="Search your favourite restaurants...."
+        placeholder="Search yout favourite restaurants...."
          id="search_field" 
         className="form-control" 
         
