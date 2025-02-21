@@ -2,19 +2,41 @@ import axios from "axios";
 import { ADD_TO_CART, FETCH_CART, REMOVE_CART_ITEM, UPDATE_CART_ITEM } from "../constants/cartConstant";
 const apiUrl = process.env.REACT_APP_API_URL;
 
-export const fetchCartItems=(alert)=>async(dispatch)=>{
+export const fetchCartItems = (alert) => async (dispatch) => {
     try {
-        const response=await axios.get("https://bitecart-back.onrender.com/api/v1/eats/cart/get-cart");
+        const token = localStorage.getItem("token");
+        if (!token) {
+            console.error("No token found. User might not be logged in.");
+            if (alert) alert.info("Please log in to access your cart.");
+            return;
+        }
+
+        const response = await axios.get(
+            "https://bitecart-back.onrender.com/api/v1/eats/cart/get-cart",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        const cartItems = response.data.data; // Assuming this is an array of cart items
         dispatch({
-            type:FETCH_CART,
-            payload:response.data.data,
+            type: FETCH_CART,
+            payload: cartItems,
         });
-    } catch (error) {
-        console.error("Fetch cart error",error);
-        if(alert){
+
+        // 🛠️ Only show "Cart is empty" if the API response is valid but the cart is actually empty
+        if (alert && Array.isArray(cartItems) && cartItems.length === 0) {
             alert.info("Cart is empty");
         }
-        
+
+    } catch (error) {
+        console.error("Fetch cart error", error);
+
+        if (alert) {
+            alert.info("Failed to fetch cart. Please try again.");
+        }
     }
 };
 //add to cart
