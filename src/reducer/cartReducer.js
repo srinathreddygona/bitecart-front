@@ -8,7 +8,7 @@ export const cartReducer=(
         case ADD_TO_CART:
             return{
                 ...state,
-                restuarant:action.payload.restaurant,
+                restaurant:action.payload.restaurant,
                 cartItems:action.payload.items,
             };
 
